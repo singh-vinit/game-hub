@@ -1,12 +1,17 @@
 import instance from "../services/apiClient";
 import { useEffect, useState } from "react";
 
+export interface platform {
+  id: number;
+  slug: string;
+}
 interface game {
   id: number;
   name: string;
   background_image: string;
+  parent_platforms: { platform: platform }[];
+  rating: number;
 }
-
 interface response {
   count: number;
   results: game[];
@@ -30,6 +35,8 @@ export const useGames = () => {
         setLoading(false);
       });
   }, []);
+
+  console.log(games);
 
   return { games, loading, error };
 };
