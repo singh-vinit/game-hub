@@ -14,7 +14,11 @@ interface Props {
 const Card = ({ game }: Props) => {
   return (
     <div className="max-w-72 shadow-md rounded-xl">
-      <img src={game.background_image} className="rounded-t-xl" />
+      <img
+        src={game.background_image}
+        className="rounded-t-xl"
+        style={{ width: "100%", height: "178px" }}
+      />
       <div className="p-4">
         <PlatformList list={game.parent_platforms} />
         <div className="text-xl font-bold mb-2">{game.name}</div>

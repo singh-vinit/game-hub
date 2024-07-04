@@ -2,8 +2,12 @@ import { useGames } from "../hooks/useGames";
 import Card from "./Card";
 import CardSkeleton from "./CardSkeleton";
 
-const Main = () => {
-  const { games, loading } = useGames();
+interface Props {
+  currentGenre: string;
+}
+
+const Main = ({currentGenre}: Props) => {
+  const { games, loading } = useGames(currentGenre);
   return (
     <div className="px-2 py-4 h-screen col-span-4">
       <div className="text-4xl font-bold capitalize mb-1">new and trending</div>

@@ -4,6 +4,7 @@ import instance from "../services/apiClient";
 interface genre {
   id: number;
   name: string;
+  slug: string;
   image_background: string;
 }
 
@@ -14,6 +15,7 @@ interface response {
 export function useGenres() {
   const [genres, setGenres] = useState<genre[]>([]);
   const [loading, setLoading] = useState(true);
+  console.log(genres);
   useEffect(() => {
     instance
       .get<response>("https://api.rawg.io/api/genres")

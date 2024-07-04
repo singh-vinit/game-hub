@@ -1,7 +1,11 @@
 import { useGenres } from "../hooks/useGenres";
 import GenreSkeleton from "./GenreSkeleton";
 
-const Sidebar = () => {
+interface Props {
+  setCurrentGenre: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const Sidebar = ({ setCurrentGenre }: Props) => {
   const { genres, loading } = useGenres();
   return (
     <div className="p-2 h-screen col-span-1">
@@ -23,7 +27,10 @@ const Sidebar = () => {
                 src={genre.image_background}
                 style={{ width: "42px", height: "42px", borderRadius: "20%" }}
               />
-              <button className="text-left font-medium text-sm hover:underline">
+              <button
+                className="text-left font-medium text-sm hover:underline"
+                onClick={() => setCurrentGenre(genre.slug)}
+              >
                 {genre.name}
               </button>
             </div>
