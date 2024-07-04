@@ -5,12 +5,18 @@ export interface platform {
   id: number;
   slug: string;
 }
+
+interface genre {
+  id: number;
+  name: string;
+}
 interface game {
   id: number;
   name: string;
   background_image: string;
   parent_platforms: { platform: platform }[];
   rating: number;
+  genres: genre[];
 }
 interface response {
   count: number;
