@@ -5,10 +5,11 @@ import CardSkeleton from "./CardSkeleton";
 interface Props {
   genre: string;
   platform: string;
+  order: string;
 }
 
-const Main = ({ genre, platform }: Props) => {
-  const { games, loading } = useGames(genre, platform);
+const Main = ({ genre, platform, order }: Props) => {
+  const { games, loading } = useGames(genre, platform, order);
   return (
     <div className="px-2 py-4 h-screen col-span-4">
       <div className="text-4xl font-bold capitalize mb-1">new and trending</div>

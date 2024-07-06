@@ -23,7 +23,7 @@ interface response {
   results: game[];
 }
 
-export const useGames = (genre: string, platform: string) => {
+export const useGames = (genre: string, platform: string, order: string) => {
   const [games, setGames] = useState<game[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
@@ -34,6 +34,7 @@ export const useGames = (genre: string, platform: string) => {
         params: {
           genres: genre || null,
           platforms: Number(platform) || null,
+          ordering: `-${order}` || null,
         },
       })
       .then((res) => {
@@ -48,7 +49,7 @@ export const useGames = (genre: string, platform: string) => {
     return () => {
       setLoading(true);
     };
-  }, [genre, platform]);
+  }, [genre, platform, order]);
 
   return { games, loading, error };
 };
