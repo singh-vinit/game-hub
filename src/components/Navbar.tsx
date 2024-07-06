@@ -1,14 +1,13 @@
-import Switch from "./Switch";
 const Navbar = () => {
   return (
-    <div className="border flex justify-around items-center p-5">
-      <div>logo</div>
+    <div className="flex items-center justify-between p-5">
+      <div className="font-mono text-2xl font-semibold">gamex</div>
       <input
         type="text"
         placeholder="search games..."
-        className="w-2/3 bg-gray-200 rounded-full text-lg px-4 py-1 focus:outline-blue-400 hover:bg-gray-300"
+        className="w-1/2 bg-gray-200 rounded-full text-lg px-4 py-1 focus:outline-blue-400 hover:bg-gray-300"
       />
-      <Switch />
+      <input type="checkbox" />
     </div>
   );
 };

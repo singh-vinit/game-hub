@@ -17,6 +17,7 @@ const Card = ({ game }: Props) => {
       <img
         src={game.background_image}
         className="rounded-t-xl"
+        loading="lazy"
         style={{ width: "100%", height: "178px" }}
       />
       <div className="p-4">

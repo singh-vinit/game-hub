@@ -1,23 +1,17 @@
 import { useGenres } from "../hooks/useGenres";
-import GenreSkeleton from "./GenreSkeleton";
-
+import { BiLoaderCircle } from "react-icons/bi";
 interface Props {
-  setCurrentGenre: React.Dispatch<React.SetStateAction<string>>;
+  onSelectGenre: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Sidebar = ({ setCurrentGenre }: Props) => {
+const Sidebar = ({ onSelectGenre }: Props) => {
   const { genres, loading } = useGenres();
   return (
     <div className="p-2 h-screen col-span-1">
       <div className="text-2xl font-bold p-4">Genres</div>
       {loading ? (
-        <div className="p-4">
-          <GenreSkeleton />
-          <GenreSkeleton />
-          <GenreSkeleton />
-          <GenreSkeleton />
-          <GenreSkeleton />
-          <div>hi</div>
+        <div>
+          <BiLoaderCircle className="ml-12 text-5xl text-slate-700 animate-spin" />
         </div>
       ) : (
         <div className="p-4">
@@ -29,7 +23,7 @@ const Sidebar = ({ setCurrentGenre }: Props) => {
               />
               <button
                 className="text-left font-medium text-sm hover:underline"
-                onClick={() => setCurrentGenre(genre.slug)}
+                onClick={() => onSelectGenre(genre.slug)}
               >
                 {genre.name}
               </button>

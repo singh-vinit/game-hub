@@ -15,7 +15,6 @@ interface response {
 export function useGenres() {
   const [genres, setGenres] = useState<genre[]>([]);
   const [loading, setLoading] = useState(true);
-  console.log(genres);
   useEffect(() => {
     instance
       .get<response>("https://api.rawg.io/api/genres")

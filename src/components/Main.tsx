@@ -3,11 +3,12 @@ import Card from "./Card";
 import CardSkeleton from "./CardSkeleton";
 
 interface Props {
-  currentGenre: string;
+  genre: string;
+  platform: string;
 }
 
-const Main = ({currentGenre}: Props) => {
-  const { games, loading } = useGames(currentGenre);
+const Main = ({ genre, platform }: Props) => {
+  const { games, loading } = useGames(genre, platform);
   return (
     <div className="px-2 py-4 h-screen col-span-4">
       <div className="text-4xl font-bold capitalize mb-1">new and trending</div>

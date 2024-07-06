@@ -23,17 +23,17 @@ interface response {
   results: game[];
 }
 
-export const useGames = (currentGenre: string) => {
+export const useGames = (genre: string, platform: string) => {
   const [games, setGames] = useState<game[]>([]);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
 
   useEffect(() => {
-    setLoading(true);
     instance
       .get<response>("/games", {
         params: {
-          genres: currentGenre || null,
+          genres: genre || null,
+          platforms: Number(platform) || null,
         },
       })
       .then((res) => {
@@ -44,9 +44,11 @@ export const useGames = (currentGenre: string) => {
         setError(err.message);
         setLoading(false);
       });
-  }, [currentGenre]);
 
-  console.log(games);
+    return () => {
+      setLoading(true);
+    };
+  }, [genre, platform]);
 
   return { games, loading, error };
 };
